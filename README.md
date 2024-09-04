@@ -1,6 +1,8 @@
 # JSD
 Jezici specificni za domen
 
+Jezikom bi se opisivale funkcije u programskom jeziku C, za koje je potrebno kreirati Unit testove. Neke od ključnih riječi koje boi jezik koristio su *function, parN, value, expected, desc, stubN, calls, name EQ itd. Function* bi definisao ime funkcije i početak "rečenice". 
+
 ## Primjer br. 1:
   Za funkciju TtErrorType funkcija1(uint8 len, uint8 data) je potrebno kreirati unit testove. Funkcija ne posjeduje pozive funkcija koje je potrebno stub-ovati i nije potrebno označavati klase ekvivalencije.
 
