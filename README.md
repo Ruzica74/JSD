@@ -32,22 +32,15 @@ The test case checks the behaviour of funkcija1 function in case there is no err
  1. funkcija1 function returns TT_E_OK.
 
 
+
 void UT_Testovi_funcija1_TC_00()
-
 {
-
   uint8 test_len = 0;
- 
   uint16 test_data = 0;
- 
 	  {
-	    
 	    TtErrorType _return  = funkcija1( test_len, test_data);
-	    
 	    CPPTEST_ASSERT_UINTEGER_EQUAL(TT_E_OK, _return);
-	    
 	  }
-  
 }
 
 2)
