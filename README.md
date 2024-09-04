@@ -33,6 +33,7 @@ The test case checks the behaviour of funkcija1 function in case there is no err
 
 
 void UT_Testovi_funcija1_TC_00()
+
 {
    /* Initializing argument 1 len */
   
