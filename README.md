@@ -36,21 +36,17 @@ void UT_Testovi_funcija1_TC_00()
 
 {
 
-  
   uint8 test_len = 0;
- 
  
   uint16 test_data = 0;
  
-  {
-  
-    
-    TtErrorType _return  = funkcija1( test_len, test_data);
-    
-    
-    CPPTEST_ASSERT_UINTEGER_EQUAL(TT_E_OK, _return);
-    
-  }
+	  {
+	    
+	    TtErrorType _return  = funkcija1( test_len, test_data);
+	    
+	    CPPTEST_ASSERT_UINTEGER_EQUAL(TT_E_OK, _return);
+	    
+	  }
   
 }
 
