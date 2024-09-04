@@ -20,14 +20,14 @@ Unit testovi koji se dobiju na izlazu:
 
 
 The test case checks the behaviour of funkcija1 function in case there is no error.
-\field{Test Specification}
+
+{Test Specification}
 1. Call funkcija1 function with the following arguments:
   * len = 0				
   * data = 0							
  2. Check expected results.
- \endfield
 
- \field{Expected Results}
+{Expected Results}
  Expected result is Passed
  1. funkcija1 function returns TT_E_OK.
 
