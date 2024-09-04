@@ -15,7 +15,8 @@ expected TT_E_OK, TT_E_NOT_OK, TT_E_NOT_OK
 EQ no
 
 Unit testovi koji se dobiju na izlazu:
-1)
+
+# 1)
 
 
 The test case checks the behaviour of funkcija1 function in case there is no error.
@@ -29,28 +30,23 @@ The test case checks the behaviour of funkcija1 function in case there is no err
  \field{Expected Results}
  Expected result is Passed
  1. funkcija1 function returns TT_E_OK.
- \endfield
 
 
 void UT_Testovi_funcija1_TC_00()
 
 {
 
-   /* Initializing argument 1 len */
   
   uint8 test_len = 0;
  
-  /* Initializing argument 2 data */
  
   uint16 test_data = 0;
  
   {
   
-    /* Tested function call */
     
     TtErrorType _return  = funkcija1( test_len, test_data);
     
-    /* Post-condition check */
     
     CPPTEST_ASSERT_UINTEGER_EQUAL(TT_E_OK, _return);
     
