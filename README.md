@@ -1,14 +1,14 @@
 # JSD
-Jezici specificni za domen
+Jezici specifični za domen
 
-Jezikom bi se opisivale funkcije u programskom jeziku C, za koje je potrebno kreirati Unit testove. Neke od ključnih riječi koje boi jezik koristio su *function, parN, value, expected, desc, stubN, calls, name EQ itd. Function* bi definisao ime funkcije i početak "rečenice". 
+Jezikom bi se opisivale funkcije u programskom jeziku C, za koje je potrebno kreirati Unit testove. Neke od ključnih riječi, koje bi jezik koristio, su *function, parN, value, cmplx, cmplxN, expected, desc, stubN, calls, name, EQ itd. function* bi definisao ime funkcije i početak opisa određenog testa. *parN* bi se koristio za navođenje N-tog parametra funkcije, gdje bi se prvo pisao tip a zatim naziv parametra. U sldećem uvučenom redu, nakon ključne riječi *value* navode se vrijednosti prethodno definisanog parametra. Onoliko koliko ima testnih slučajeva, toliko ima i vrijednosti. Riječ *cmplx* pored *parN* bi označavao da se radi o parametru kompleksnog tipa, a sa *cmplxN* bi se navodile, odvojeno u svakom redu, vrijednosti polja kompleksnog parametra. Nakon *expected* bi se definisale povratne vrijednosti u svakom od testnih slučajeva, dok bi *desc* služio za definisanje opisa testne specifikacije svakog testnog slučaja. *stubN, calls* i *name* bi se koristile prilikom definisanja funkcija za koje su kreirani stub-ovi. Prilikom uvodjenja stub-ova navodio bi se naziv funkcije koja se stabuje, koliko poziva te funkcije se očekuje, te koji je naziv stub-a. *EQ* je riječ kojom bi se definisalo da li se označavaju klase ekvivalencije. Dodatne ključne riječi će biti uključene u skladu sa potrebama, u toku  izrade.
 
 ## Primjer br. 1:
   Za funkciju TtErrorType funkcija1(uint8 len, uint8 data) je potrebno kreirati unit testove. Funkcija ne posjeduje pozive funkcija koje je potrebno stub-ovati i nije potrebno označavati klase ekvivalencije.
 
 Jezik kojim se zadaje komanda za keiranje unit testova: 
   
-function funkcija1  
+function funkcija1 
 par1 uint8 len  
 &nbsp;&nbsp;&nbsp;&nbsp;value 0, 256, 1  
 par2 uint8 data  
