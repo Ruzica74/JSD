@@ -1,20 +1,18 @@
 # JSD
 Jezici specifični za domen
 
-Jezikom bi se opisivale funkcije u programskom jeziku C, za koje je potrebno kreirati Unit testove. Neke od ključnih riječi, koje bi jezik koristio, su *function, parN, value, cmplx, cmplxN, expected, desc, stubN, calls, name, EQ itd. function* bi definisao ime funkcije i početak opisa određenog testa. *parN* bi se koristio za navođenje N-tog parametra funkcije, gdje bi se prvo pisao tip a zatim naziv parametra. U sldećem uvučenom redu, nakon ključne riječi *value* navode se vrijednosti prethodno definisanog parametra. Onoliko koliko ima testnih slučajeva, toliko ima i vrijednosti. Riječ *cmplx* pored *parN* bi označavao da se radi o parametru kompleksnog tipa, a sa *cmplxN* bi se navodile, odvojeno u svakom redu, vrijednosti polja kompleksnog parametra. Nakon *expected* bi se definisale povratne vrijednosti u svakom od testnih slučajeva, dok bi *desc* služio za definisanje opisa testne specifikacije svakog testnog slučaja. *stubN, calls* i *name* bi se koristile prilikom definisanja funkcija za koje su kreirani stub-ovi. Prilikom uvodjenja stub-ova navodio bi se naziv funkcije koja se stabuje, koliko poziva te funkcije se očekuje, te koji je naziv stub-a. *EQ* je riječ kojom bi se definisalo da li se označavaju klase ekvivalencije. Dodatne ključne riječi će biti uključene u skladu sa potrebama, u toku  izrade.
+Jezikom bi se opisivale funkcije u programskom jeziku C, za koje je potrebno kreirati Unit testove. Neke od ključnih riječi, koje bi jezik koristio, su  *function, cases, stubs, EQ itd. function* bi definisao ime funkcije i njene parametre, te početak opisa određenog testa. Riječ *cases* bi označavala da se u narednim linijama nalaze osnovne informacije o svakom testnom slučaju. U običnim oblim zagradama se navode vrijednosti parametara u tom testnom slučaju. Ako je tip parametra složenog tipa onda se u uglastim zagradama smještaju imena i vrijednosti atributa u sklopu složenog tipa, npr. \[name=john, age=25]. Ako je jedan od parametara pokazivač, onda ispred vrijednosti ili uglaste zagrade potrebno je staviti zvjezdicu *. Nakon definisanja vrijednosti parametara sintaksa nalaže da se stavi strelica => i očekivana povratna vrijednost tog testnog slučaja. Da bi testni slučaj bio potpun potrebn je navesti i opis testa, koji bi se nalazio nakon očekivane vrijednosti testa odvojen tačka zarezom. Nakon testnih slučajeva ključna riječ *stubs* bi se koristila za definisanja funkcija za koje su kreirani stub-ovi. Prilikom uvodjenja stub-ova u oblim zagradama navodio bi se naziv funkcije koja se stabuje, koliko poziva te funkcije se očekuje, te koji je naziv stub-a. *EQ* je riječ kojom bi se definisalo da li se označavaju klase ekvivalencije. Dodatne ključne riječi će biti uključene u skladu sa potrebama, u toku izrade.  
 
 ## Primjer br. 1:
   Za funkciju TtErrorType funkcija1(uint8 len, uint8 data) je potrebno kreirati unit testove. Funkcija ne posjeduje pozive funkcija koje je potrebno stub-ovati i nije potrebno označavati klase ekvivalencije.
 
 Jezik kojim se zadaje komanda za keiranje unit testova: 
   
-function funkcija1 
-par1 uint8 len  
-&nbsp;&nbsp;&nbsp;&nbsp;value 0, 256, 1  
-par2 uint8 data  
-&nbsp;&nbsp;&nbsp;&nbsp;value 0, 20, 256  
-expected TT_E_OK, TT_E_NOT_OK, TT_E_NOT_OK  
-&nbsp;&nbsp;&nbsp;&nbsp;desc there is no error, parameter len is equal to 256, parameter data is equal to 256  
+function funkcija1(uint8 len, uint8 data)  
+&nbsp;&nbsp;&nbsp;&nbsp;cases  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(0, 0) => TT_E_OK; there is no error  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(256, 20) => TT_E_NOT_OK; parameter len is equal to 256  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1, 256) => TT_E_NOT_OK; parameter data is equal to 256    
 EQ no  
 
 Unit testovi koji se dobiju na izlazu:
@@ -118,20 +116,15 @@ void UT_Testovi_funcija1_TC_02()
 
 Jezik kojim se zadaje komanda za keiranje unit testova (cmplx označava da je u pitanju komppleksni tip, a pointer da je pokazivač u pitanju, stub upućuje na funkciju za stabovanje i calls na broj poziva stub-ovane funkicije koji se ocekuje):  
   
-function funkcija2  
-par1 uint8 len  
-&nbsp;&nbsp;&nbsp;&nbsp;value 0, 1, 256, 1  
-par2 cmplx pointer TtData data  
-&nbsp;&nbsp;&nbsp;&nbsp;cmplx1 status, enable  
-&nbsp;&nbsp;&nbsp;&nbsp;value1 1, True  
-&nbsp;&nbsp;&nbsp;&nbsp;value2 1, False  
-&nbsp;&nbsp;&nbsp;&nbsp;value3 1, True  
-&nbsp;&nbsp;&nbsp;&nbsp;value4 20, True  
-stub1 someFunc calls 1 name CppTest_StubCallback_funkcija1_someFunc  
-expected TT_E_OK, TT_E_OK, TT_E_NOT_OK, TT_E_INVALID_PARAMETER  
-&nbsp;&nbsp;&nbsp;&nbsp;desc there is no error and value of enable a struct member of data is true, there is no error and value of enable a struct member of data is false, parameter len is equal to 256, parameter status is invalid  
-EQ no  
-
+function funkcija2(uint8 len, TtData* data)  
+&nbsp;&nbsp;&nbsp;&nbsp;cases  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(0, *\[status=1, enable=True]) => TT_E_OK; there is no error and value of enable a struct member of data is true  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1, *\[status=1, enable=False]) => TT_E_OK; there is no error and value of enable a struct member of data is false  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(256, *\[status=1, enable=True]) => TT_E_NOT_OK; parameter len is equal to 256  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1, *\[status=20, enable=True]) => TT_E_INVALID_PARAMETER; parameter status is invalid   
+&nbsp;&nbsp;&nbsp;&nbsp;stubs    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(someFunc, 1, CppTest_StubCallback_funkcija1_someFunc)  
+EQ no   
 
 ### Primjer prvog unit test-a koji bi se dobio na izlazu:
 
