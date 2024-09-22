@@ -1,0 +1,31 @@
+/*
+    Questionnaire language.
+
+*/
+
+
+Questionnaire:
+    questions+=Question
+;
+
+Question:
+    'Q' ('[' terms=QuestionTerm+[','] ']')? ':' text+=TextLine
+    type=Type
+;
+
+QuestionTerm:
+    QuestionCondition | QuestionID 
+;
+
+QuestionID: qid=ID;
+QuestionCondition: lhs=ID '=' rhs=QuestionConditionRHS;
+QuestionConditionRHS: ID | INT;
+
+Type: Free | Choice;
+
+Free: /___+/ (regex=/\/((?:(?:\\\/)|[^\/])*)\//)?;
+
+Choice: options+=ChoiceOption;
+ChoiceOption: num=INT ('[' id=ID ']')? '.' text+=TextLine;
+
+TextLine:  !/Q:|Q\[|\d+(\[[^\]]*\])?\.|___+/ /[^\n]+/;
