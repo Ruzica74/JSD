@@ -38,7 +38,7 @@ void UT_Testovi_funcija1_TC_00()
 {
   /* Initializing argument 1 len */
   uint8 test_len = 0;
-/* Initializing argument 2 data */
+  /* Initializing argument 2 data */
   uint16 test_data = 0;
   {
     /* Tested function call */
@@ -153,7 +153,7 @@ void UT_Testovi_funcija1_TC_02()
    /* Functions called check */
    CPPTEST_EXPECT_NCALLS("someFunc", 1);
    /* Initializing argument 1 len */
-  uint8 test_len = 0;
+   uint8 test_len = 0;
    /* Initializing argument 2 data */
    TtData data_example = { 
      .status = 1,
