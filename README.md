@@ -10,9 +10,9 @@ Jezik kojim se zadaje komanda za keiranje unit testova:
   
 function funkcija1(uint8 len, uint8 data)  
 &nbsp;&nbsp;&nbsp;&nbsp;cases  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(0, 0) => TT_E_OK; there is no error  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(256, 20) => TT_E_NOT_OK; parameter len is equal to 256  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1, 256) => TT_E_NOT_OK; parameter data is equal to 256    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(0, 0) => TT_E_OK; there is no error,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(256, 20) => TT_E_NOT_OK; parameter len is equal to 256,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1, 256) => TT_E_NOT_OK; parameter data is equal to 256      
 end 
 
 Unit testovi koji se dobiju na izlazu:
@@ -118,9 +118,9 @@ Jezik kojim se zadaje komanda za keiranje unit testova (cmplx označava da je u 
   
 function funkcija2(uint8 len, TtData* data)  
 &nbsp;&nbsp;&nbsp;&nbsp;cases  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(0, *\[status=1, enable=True]) => TT_E_OK; there is no error and value of enable a struct member of data is true  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1, *\[status=1, enable=False]) => TT_E_OK; there is no error and value of enable a struct member of data is false  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(256, *\[status=1, enable=True]) => TT_E_NOT_OK; parameter len is equal to 256  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(0, *\[status=1, enable=True]) => TT_E_OK; there is no error and value of enable a struct member of data is true,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1, *\[status=1, enable=False]) => TT_E_OK; there is no error and value of enable a struct member of data is false,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(256, *\[status=1, enable=True]) => TT_E_NOT_OK; parameter len is equal to 256,  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1, *\[status=20, enable=True]) => TT_E_INVALID_PARAMETER; parameter status is invalid   
 &nbsp;&nbsp;&nbsp;&nbsp;stubs    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(someFunc, 1, CppTest_StubCallback_funkcija1_someFunc)  
