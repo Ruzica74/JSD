@@ -144,8 +144,7 @@ The test case checks the behaviour of funkcija1 function in case there is no err
 {Expected Results}
 Expected result is Passed
 1. funkcija1 function returns TT_E_OK.
-2. Function someFunc is called 1 time with the following parameter:
-  * value = 1
+2. Function someFunc is called 1 time 
 
 ```C
 void UT_Testovi_funcija1_TC_02()
