@@ -135,7 +135,7 @@ The test case checks the behaviour of funkcija1 function in case there is no err
 1. Define the data_example of TtData type with the following elements:
   * status = 1
   * enable = True
-2. Stub function
+2. Stub function someFunc
 1. Call funkcija1 function with the following arguments:
   * len = 0				
   * data = 0							
