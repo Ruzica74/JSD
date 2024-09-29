@@ -6,10 +6,8 @@
 
 Pre nego što počnete, obezbedite da imate sledeće instalirano na svom sistemu:
 
-```
-Python 3.x: Preuzmite sa python.org.
-pip: Ovo je obično uključeno u instalaciju Pythona. Možete proveriti pokretanjem pip --version u terminalu.
-```
+1. Python 3.x: Preuzmite sa python.org.
+2. pip: Ovo je obično uključeno u instalaciju Pythona. Možete proveriti pokretanjem pip --version u terminalu.
 
 ### Koraci za Instalaciju
 
@@ -17,9 +15,21 @@ Korak 1: Klonirajte Repozitorijum
 Otvorite terminal i pokrenite:
 
 ```
-
-
+git clone https://github.com/vaškorisnik/vaša-cli-aplikacija.git
+cd vaša-cli-aplikacija
 ```
+Korak 2: Kreirajte Virtuelno Okruženje (Opcionalno)
+
+Preporučuje se korišćenje virtuelnog okruženja za upravljanje zavisnostima. Pokrenite sledeće komande:
+```
+python -m venv venv
+source venv/bin/activate  # Na Windowsu koristite `venv\Scripts\activate`
+```
+
+
+bash
+Копирај кȏд
+pip install -r requirements.txt
 
 ## Opis
 
