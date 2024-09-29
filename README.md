@@ -1,5 +1,27 @@
 # JSD
-Jezici specifični za domen
+
+## Instalacija
+
+### Preduslovi
+
+Pre nego što počnete, obezbedite da imate sledeće instalirano na svom sistemu:
+
+```
+Python 3.x: Preuzmite sa python.org.
+pip: Ovo je obično uključeno u instalaciju Pythona. Možete proveriti pokretanjem pip --version u terminalu.
+```
+
+### Koraci za Instalaciju
+
+Korak 1: Klonirajte Repozitorijum
+Otvorite terminal i pokrenite:
+
+```
+
+
+```
+
+## Opis
 
 Jezikom bi se opisivale funkcije u programskom jeziku C, za koje je potrebno kreirati Unit testove. Neke od ključnih riječi, koje bi jezik koristio, su  *function, cases, stubs, end itd. function* bi definisao ime funkcije i njene parametre, te početak opisa određenog testa. Riječ *cases* bi označavala da se u narednim linijama nalaze osnovne informacije o svakom testnom slučaju. U običnim oblim zagradama se navode vrijednosti parametara u tom testnom slučaju. Ako je tip parametra složenog tipa onda se u uglastim zagradama smještaju imena i vrijednosti atributa u sklopu složenog tipa, npr. \[name=john, age=25]. Ako je jedan od parametara pokazivač, onda ispred vrijednosti ili uglaste zagrade potrebno je staviti zvjezdicu *. Nakon definisanja vrijednosti parametara sintaksa nalaže da se stavi strelica => i očekivana povratna vrijednost tog testnog slučaja. Da bi testni slučaj bio potpun potrebn je navesti i opis testa, koji bi se nalazio nakon očekivane vrijednosti testa odvojen tačka zarezom i pod navodnicima. Svaki testni slučaj bi se odvajao zapetom. Nakon testnih slučajeva ključna riječ *stubs* bi se koristila za definisanja funkcija za koje su kreirani stub-ovi. Prilikom uvodjenja stub-ova u oblim zagradama navodio bi se naziv funkcije koja se stabuje, koliko poziva te funkcije se očekuje, te koji je naziv stub-a. *end* je riječ kojom bi se označavao kraj opisa testa. Dodatne ključne riječi će biti uključene u skladu sa potrebama, u toku izrade.  
 
