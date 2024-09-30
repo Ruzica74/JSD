@@ -15,8 +15,8 @@ Korak 1: Klonirajte Repozitorijum
 Otvorite terminal i pokrenite:
 
 ```
-git clone https://github.com/vaškorisnik/vaša-cli-aplikacija.git
-cd vaša-cli-aplikacija
+git clone https://github.com/Ruzica74/JSD.git
+cd unitTestSupport
 ```
 Korak 2: Kreirajte Virtuelno Okruženje (Opcionalno)
 
