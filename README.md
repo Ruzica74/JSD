@@ -1,4 +1,4 @@
-# JSD
+# JSD - unitTestSupport alat
 
 ## Instalacija
 
@@ -26,10 +26,19 @@ python -m venv venv
 source venv/bin/activate  # Na Windowsu koristite `venv\Scripts\activate`
 ```
 
+Korak 3: Instalacija zavisnosti i unitTestSuport alata
 
-bash
-Копирај кȏд
-pip install -r requirements.txt
+```
+pip install --editable .
+```
+
+### Pokretanje alata   
+
+Nakon opcije -i navodi se ulazni fajl koji sadrži tekst za prevođenje, dok se nakon opcije -o navodi ime tekstualnog fajla u koji će biti upisan rezultat.
+
+```
+unitTestSupport -i unit.test -o out.txt
+```
 
 ## Opis
 
