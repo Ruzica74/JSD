@@ -1,0 +1,17 @@
+function funkcija1(uint8 len, uint8* data)
+    cases
+        (0, *0) => TT_E_OK; 'there is no error',
+        (256, *20) => TT_E_NOT_OK; 'parameter len is equal to 256',
+        (1, *256) => TT_E_NOT_OK; 'parameter data is equal to 256'
+end
+
+function funkcija2(uint8 len, uint8 data)
+    cases
+        (0, 1) => TT_E_OK; 'there is no error',
+        (256, 20) => TT_E_NOT_OK; 'parameter len is equal to 256',
+        (1, 256) => TT_E_NOT_OK; 'parameter data is equal to 256'
+    stubs
+        (someFunc, 1, CppTest_StubCallback_funkcija1_someFunc)
+end
+
+
