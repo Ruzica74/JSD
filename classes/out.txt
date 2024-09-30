@@ -190,3 +190,195 @@ void UT_Test_funkcija2_TC_02(){
   CPPTEST_ASSERT_UINTEGER_EQUAL(TT_E_NOT_OK, _return);
 }
 
+/*
+This test case checks the behaviour of the funkcija1 function in case there is no error.
+
+{Test Specification}
+
+  1. Call funkcija1 function with the following arguments: 
+  - len = 0
+  - data = pointing to the data_example
+  1. Check expected results.
+
+
+{Expected Results} Expected result is Passed
+
+  1. funkcija1 function returns TT_E_OK.
+*/
+
+
+void UT_Test_funkcija1_TC_00(){
+  /* Initializing argument 1 */
+  uint8 test_len = 0;
+  /* Initializing argument 2 */
+  uint8 = data_example;
+  uint8* test_data = data_example;
+
+  /* Tested function call */
+  TtErrorType _return  = funkcija1(test_len,test_data);
+  /* Post-condition check */
+  CPPTEST_ASSERT_UINTEGER_EQUAL(TT_E_OK, _return);
+}
+
+/*
+This test case checks the behaviour of the funkcija1 function in case parameter len is equal to 256.
+
+{Test Specification}
+
+  1. Call funkcija1 function with the following arguments: 
+  - len = 256
+  - data = pointing to the data_example
+  1. Check expected results.
+
+
+{Expected Results} Expected result is Passed
+
+  1. funkcija1 function returns TT_E_NOT_OK.
+*/
+
+
+void UT_Test_funkcija1_TC_01(){
+  /* Initializing argument 1 */
+  uint8 test_len = 256;
+  /* Initializing argument 2 */
+  uint8 = data_example;
+  uint8* test_data = data_example;
+
+  /* Tested function call */
+  TtErrorType _return  = funkcija1(test_len,test_data);
+  /* Post-condition check */
+  CPPTEST_ASSERT_UINTEGER_EQUAL(TT_E_NOT_OK, _return);
+}
+
+/*
+This test case checks the behaviour of the funkcija1 function in case parameter data is equal to 256.
+
+{Test Specification}
+
+  1. Call funkcija1 function with the following arguments: 
+  - len = 1
+  - data = pointing to the data_example
+  1. Check expected results.
+
+
+{Expected Results} Expected result is Passed
+
+  1. funkcija1 function returns TT_E_NOT_OK.
+*/
+
+
+void UT_Test_funkcija1_TC_02(){
+  /* Initializing argument 1 */
+  uint8 test_len = 1;
+  /* Initializing argument 2 */
+  uint8 = data_example;
+  uint8* test_data = data_example;
+
+  /* Tested function call */
+  TtErrorType _return  = funkcija1(test_len,test_data);
+  /* Post-condition check */
+  CPPTEST_ASSERT_UINTEGER_EQUAL(TT_E_NOT_OK, _return);
+}
+
+/*
+This test case checks the behaviour of the funkcija2 function in case there is no error.
+
+{Test Specification}
+
+  1. Stub function someFunc
+  2. Call funkcija2 function with the following arguments: 
+  - len = 0
+  - data = 1
+  2. Check expected results.
+
+
+{Expected Results} Expected result is Passed
+
+  1. funkcija2 function returns TT_E_OK.
+  2. Function someFunc is called 1 time(s).
+*/
+
+
+void UT_Test_funkcija2_TC_00(){
+  /* Functions called check */ 
+  CPPTEST_EXPECT_NCALLS("someFunc", 1);
+  /* Initializing argument 1 */
+  uint8 test_len = 0;
+  /* Initializing argument 2 */
+  uint8 test_data = 1;
+  CPPTEST_REGISTER_STUB_CALLBACK("someFunc", &CppTest_StubCallback_funkcija1_someFunc);
+
+  /* Tested function call */
+  TtErrorType _return  = funkcija2(test_len,test_data);
+  /* Post-condition check */
+  CPPTEST_ASSERT_UINTEGER_EQUAL(TT_E_OK, _return);
+}
+
+/*
+This test case checks the behaviour of the funkcija2 function in case parameter len is equal to 256.
+
+{Test Specification}
+
+  1. Stub function someFunc
+  2. Call funkcija2 function with the following arguments: 
+  - len = 256
+  - data = 20
+  2. Check expected results.
+
+
+{Expected Results} Expected result is Passed
+
+  1. funkcija2 function returns TT_E_NOT_OK.
+  1. Function someFunc is called 1 time(s).
+*/
+
+
+void UT_Test_funkcija2_TC_01(){
+  /* Functions called check */ 
+  CPPTEST_EXPECT_NCALLS("someFunc", 1);
+  /* Initializing argument 1 */
+  uint8 test_len = 256;
+  /* Initializing argument 2 */
+  uint8 test_data = 20;
+  CPPTEST_REGISTER_STUB_CALLBACK("someFunc", &CppTest_StubCallback_funkcija1_someFunc);
+
+  /* Tested function call */
+  TtErrorType _return  = funkcija2(test_len,test_data);
+  /* Post-condition check */
+  CPPTEST_ASSERT_UINTEGER_EQUAL(TT_E_NOT_OK, _return);
+}
+
+/*
+This test case checks the behaviour of the funkcija2 function in case parameter data is equal to 256.
+
+{Test Specification}
+
+  1. Stub function someFunc
+  2. Call funkcija2 function with the following arguments: 
+  - len = 1
+  - data = 256
+  2. Check expected results.
+
+
+{Expected Results} Expected result is Passed
+
+  1. funkcija2 function returns TT_E_NOT_OK.
+  1. Function someFunc is called 1 time(s).
+*/
+
+
+void UT_Test_funkcija2_TC_02(){
+  /* Functions called check */ 
+  CPPTEST_EXPECT_NCALLS("someFunc", 1);
+  /* Initializing argument 1 */
+  uint8 test_len = 1;
+  /* Initializing argument 2 */
+  uint8 test_data = 256;
+  CPPTEST_REGISTER_STUB_CALLBACK("someFunc", &CppTest_StubCallback_funkcija1_someFunc);
+
+  /* Tested function call */
+  TtErrorType _return  = funkcija2(test_len,test_data);
+  /* Post-condition check */
+  CPPTEST_ASSERT_UINTEGER_EQUAL(TT_E_NOT_OK, _return);
+}
+

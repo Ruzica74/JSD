@@ -1,0 +1,74 @@
+// Define the main rule for the input function
+Model:
+    functions+=FunctionDefinition
+;
+
+// Define a function with its name, parameters, cases, and an optional stubs section
+FunctionDefinition:
+    'function' name=ID '(' (parameters*=Parameter[','])? ')' 
+    'cases'
+    cases+=CaseDefinition[',']
+    ('stubs'
+    stubs+=StubDefinition)?
+    'end'
+;
+
+// Define a function parameter
+Parameter:
+    type=ID name=ID 
+;
+
+// Define the case structure to handle both simple and compxcvlex values
+CaseDefinition:
+    '(' parValues+=SimpleOrComplexValue[','] ')' 
+    '=>' result=ID ';' description=STRING
+;
+
+// Allow either a simple value (INT, FLOAT etc.) or a complex struct (e.g., *[status=1, enable=True])
+SimpleOrComplexValue:
+    SimpleValue | ComplexValue | PointerValue
+;
+
+SimpleValue:
+    INT | FLOAT | BOOL | STRING | ID
+;
+
+ComplexValue:
+    pointer='*'? '[' elements+=StructMember[','] ']'
+;
+
+PointerValue:
+    '*' value=SimpleValue 
+;
+
+// Define a struct member inside the case
+StructMember:
+    memberName=ID '=' memberValue=SimpleValue
+;
+
+// Define the stubs section (optional in the FunctionDefinition rule)
+StubDefinition:
+    '(' stubFuncName=ID ',' stubValue=INT ',' stubCallback=ID ')'
+;
+
+// Define boolean values (True/False)
+BOOL:
+    /True|False/
+;
+
+// Define terminals for integers and floating-point numbers
+INT:
+    /\d+/
+;
+
+FLOAT:
+    /\d+\.\d+/
+;
+
+// Default ID rule (for variable names, etc.)
+ID:
+    /[a-zA-Z_\*][a-zA-Z0-9_\*]*/
+;
+
+STRING:
+    /'((\\')|[^'])*'/ | /"((\\")|[^"])*"/;
